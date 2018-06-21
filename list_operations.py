@@ -42,7 +42,7 @@ def tail(input_list):
 
     """
 
-    return []
+    return input_list[1:]
 
 
 def last(input_list):
@@ -55,7 +55,7 @@ def last(input_list):
 
     """
 
-    return []
+    return input_list[-1]
 
 
 def init(input_list):
@@ -68,7 +68,7 @@ def init(input_list):
 
     """
 
-    return []
+    return input_list[:len(input_list) - 1]
 
 
 ##############################################################################
