@@ -30,8 +30,10 @@ def custom_len(input_list):
         8
 
     """
-
-    return 0
+    count = 0
+    for item in input_list:
+        count += 1
+    return count
 
 
 # For the next four exercises, you'll need to be clever and think about ways
@@ -58,8 +60,9 @@ def custom_append(input_list, value):
         True
 
     """
-
-    pass
+#    print(id(input_list))
+    input_list += [value]
+#    print(id(input_list))
 
 
 def custom_extend(input_list, second_list):
@@ -77,8 +80,8 @@ def custom_extend(input_list, second_list):
         True
 
     """
-
-    pass
+    for item in second_list:
+        custom_append(input_list, item)
 
 
 def custom_insert(input_list, index, value):
@@ -96,7 +99,9 @@ def custom_insert(input_list, index, value):
 
     """
 
-    pass
+    temp = input_list[index:]
+    input_list[index] = value
+    custom_extend(input_list, temp)
 
 
 def custom_remove(input_list, value):
@@ -114,8 +119,12 @@ def custom_remove(input_list, value):
         True
 
     """
-
-    pass
+    index = 0
+    for item in input_list:
+        if item == value:
+            del input_list[index]
+            return
+        index += 1
 
 
 def custom_pop(input_list):
@@ -134,7 +143,9 @@ def custom_pop(input_list):
 
     """
 
-    return None
+    last_item = input_list[-1]
+    del input_list[-1]
+    return last_item
 
 
 def custom_index(input_list, value):
@@ -150,7 +161,12 @@ def custom_index(input_list, value):
 
     """
 
-    return 0
+    index = 0
+    for item in input_list:
+        if item == value:
+            return index
+        index += 1
+    return None
 
 
 def custom_count(input_list, value):
@@ -166,7 +182,11 @@ def custom_count(input_list, value):
 
     """
 
-    return 0
+    count = 0
+    for item in input_list:
+        if item == value:
+            count += 1
+    return count
 
 
 def custom_reverse(input_list):
@@ -185,8 +205,9 @@ def custom_reverse(input_list):
 
     """
 
-    pass
-
+    input_list = input_list[::-1]
+    print(input_list)
+    
 
 def custom_contains(input_list, value):
     """Return True or False if value is in the input_list.
@@ -205,7 +226,10 @@ def custom_contains(input_list, value):
 
     """
 
-    return None
+    for item in input_list:
+        if item == value:
+            return True
+    return False
 
 
 def custom_equality(some_list, another_list):
@@ -223,8 +247,13 @@ def custom_equality(some_list, another_list):
         False
 
     """
-
-    return None
+    if len(some_list) == len(another_list):
+        for index in range(len(some_list)):
+            if some_list[index] != another_list[index]:
+                return False
+        return True
+    else:
+        return False
 
 
 ##############################################################################
